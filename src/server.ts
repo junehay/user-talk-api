@@ -20,14 +20,14 @@ sequelize
 
 // middleware
 if (process.env.NODE_ENV === 'production') {
-  app.use(helmet()); // 요구사항 5 ('X-Powered-By' 헤더 필드 제거는 helmet에 내장)
-  app.use(morgan(':method :url :remote-addr :user-agent', { stream: stream })); // 요구사항 3
+  app.use(helmet());
+  app.use(morgan(':method :url :remote-addr :user-agent', { stream: stream }));
 } else {
   app.use(morgan('dev'));
 }
 
-app.use(express.json({ limit: '2kb' })); // 요구사항 4
-app.use(express.urlencoded({ extended: false, limit: '2kb' })); // 요구사항 4
+app.use(express.json({ limit: '2kb' }));
+app.use(express.urlencoded({ extended: false, limit: '2kb' }));
 app.use(cookieParser(process.env.SECRET_KEY));
 
 // router
